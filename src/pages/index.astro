@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/base.astro";
+import { EmptySection } from "../index.js";
+import { FullWidthSection } from "../index.js";
+import { HalfSection } from "../index.js";
+import { ImageHero } from "../index.js";
+import { ImageSection } from "../index.js";
+---
+
+<Layout>
+	<ImageHero>
+	</ImageHero>
+
+	<EmptySection>
+	</EmptySection>
+	<FullWidthSection>
+	</FullWidthSection>
+	<HalfSection>
+	</HalfSection>
+	<ImageSection>
+	</ImageSection>
+</Layout>
+
+<style global>
+	body {
+		background: var(--color-bg);
+	}
+</style>
