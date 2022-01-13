@@ -1,6 +1,6 @@
 ---
-import Image from 'components/elements/Image.astro'
-import Translate from 'components/localization/Translate.astro'
+import { Image }  from 'astro-utils'
+import { Translate } from 'astro-localization'
 
 interface Props {
 	className?: string
@@ -10,9 +10,12 @@ interface Props {
 	buttonText?: string
 	buttonLink?: string
 	id?: string
+	imageUrl?: string
 }
 
-const { title, titleUnderline, subtitle, id, buttonText, buttonLink,  class: className = '' } = Astro.props as props
+
+
+const { title, titleUnderline, subtitle, id, buttonText, buttonLink, imageUrl,  class: className = '' } = Astro.props as props
 ---
 
 <section id={id || ''} class={`${className} image-hero`}>
@@ -22,11 +25,11 @@ const { title, titleUnderline, subtitle, id, buttonText, buttonLink,  class: cla
 			<p class="hero-caption">
 				<Translate key={subtitle} />
 			</p>
-			<button href={buttonLink} class="hero__cta cta cta--primary">{buttonText}</button>
+			<button href={buttonLink} class="hero-cta">{buttonText}</button>
 		</div>
 
 		<div class="hero-image-wrapper">
-			<Image class="hero-image" src="/images/illustrations/Astronaut-pana.svg" />
+			<Image class="hero-image" src={imageUrl} />
 		</div>
 	</div>
 	<span class="scrolldown"></span>
