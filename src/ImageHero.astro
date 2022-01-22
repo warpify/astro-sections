@@ -1,5 +1,5 @@
 ---
-import { Image }  from 'astro-utils'
+import { Image }  from 'astro-image'
 import { Translate } from 'astro-localization'
 
 interface Props {
@@ -14,8 +14,7 @@ interface Props {
 }
 
 
-
-const { title, titleUnderline, subtitle, id, buttonText, buttonLink, imageUrl,  class: className = '' } = Astro.props as props
+const { title, titleUnderline, subtitle, id, buttonText, buttonLink, imageUrl = '',  class: className = '' } = Astro.props as props
 ---
 
 <section id={id || ''} class={`${className} image-hero`}>
