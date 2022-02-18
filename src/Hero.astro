@@ -1,42 +1,45 @@
 ---
-import { Image }  from 'astro-image'
-import { Translate } from 'astro-localization'
+import { Image } from "astro-image";
+import { Translate } from "astro-localization";
 
 interface Props {
-	className?: string
-	title: string
-	titleUnderline?: string
-	subtitle?: string
-	buttonText?: string
-	buttonLink?: string
-	id?: string
-	imageUrl?: string
+	className?: string;
+	title: string;
+	subtitle?: string;
+	buttonText?: string;
+	buttonLink?: string;
+	id?: string;
+	image?: string;
+	lmap?: Object;
 }
 
-
-const { title, titleUnderline, subtitle, id, buttonText, buttonLink, imageUrl = '',  class: className = '' } = Astro.props as props
+const { title, subtitle, buttonText, buttonLink, image, id = false, class: className = "", container = true, lmap = {} } = Astro.props as Props;
 ---
 
-<section id={id || ''} class={`${className} image-hero`}>
-	<div class="container hero hero-container">
+<section {id} class={`hero ${className}`}>
+	<div class={`${container ? "container" : ""} hero-container`}>
 		<div class="hero-text">
-			<h1 class="hero-title"><Translate key={title}  />&nbsp;{titleUnderline && <span class="hero-title-underline"><Translate key={titleUnderline} /></span>}</h1>
+			<h1 class="hero-title">
+				<Translate {lmap} key={title} />
+			</h1>
 			<p class="hero-caption">
-				<Translate key={subtitle} />
+				<Translate {lmap} key={subtitle} />
 			</p>
-			<button href={buttonLink} class="hero-cta">{buttonText}</button>
+			<button href={buttonLink} class="hero-action">{buttonText}</button>
 		</div>
 
-		<div class="hero-image-wrapper">
-			<Image class="hero-image" src={imageUrl} />
-		</div>
+		{image && (
+			<div class="hero-image-wrapper">
+				<Image class="hero-image" src={image} />
+			</div>
+		)}
 	</div>
 	<span class="scrolldown"></span>
 </section>
 
 <style lang="scss">
 	/* Hero section */
-	section.image-hero {
+	section.hero {
 		padding: var(--spacer-xl) 0;
 		position: relative;
 		height: 100vh;
@@ -47,13 +50,13 @@ const { title, titleUnderline, subtitle, id, buttonText, buttonLink, imageUrl = 
 	}
 
 	@media screen and (min-width: 80em) {
-		.defnault-hero .container {
+		.hero .container {
 			margin-top: calc(var(--header-height) - 1rem);
 		}
 	}
 
 	@media screen and (min-width: 40em) {
-		.image-hero {
+		.hero {
 			background-color: transparent;
 		}
 	}
@@ -84,14 +87,9 @@ const { title, titleUnderline, subtitle, id, buttonText, buttonLink, imageUrl = 
 		font-weight: 800;
 	}
 
-	.hero-title-underline {
-		border-bottom: 0.25rem solid var(--color-primary);
-	}
-
 	.hero-caption {
 		margin-bottom: 3rem;
 	}
-
 
 	@media screen and (min-width: 40em) {
 		.hero-image-wrapper {
@@ -104,7 +102,7 @@ const { title, titleUnderline, subtitle, id, buttonText, buttonLink, imageUrl = 
 
 	@media screen and (min-width: 100em) {
 		.hero-image-wrapper .hero-image {
-			transform: scale(1.2) translateX(2rem)
+			transform: scale(1.2) translateX(2rem);
 		}
 	}
 

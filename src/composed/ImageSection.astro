@@ -1,0 +1,41 @@
+---
+import { Image } from "astro-image";
+import { HalfSection } from "../index.js";
+
+interface Props {
+	title: string;
+	subtitle: string;
+	alt: boolean;
+	imgUrl: string;
+	imgAlt: string;
+	imgWidth?: string;
+	imgHeight: string;
+	imgAnimateOnScroll: boolean;
+	id?: string;
+	inverted?: boolean;
+	className?: string;
+	verticalAlignment?: string;
+	lmap?: Object;
+}
+
+const {
+	title,
+	subtitle,
+	imgUrl,
+	imgAlt,
+	imgWidth,
+	imgHeight,
+	imgAnimateOnScroll,
+	id,
+	class: className = "",
+	alt = false,
+	inverted = true,
+	verticalAlignment = "center",
+	lmap = {}
+} = Astro.props as Props;
+---
+
+<HalfSection {title} {subtitle} {inverted} {id} {alt} {verticalAlignment} {lmap}>
+	<Image class="image" src={imgUrl} alt={imgAlt} width={imgWidth} height={imgHeight} interactivity={imgAnimateOnScroll && "scroll"} />
+	<slot slot="footer" />
+</HalfSection>

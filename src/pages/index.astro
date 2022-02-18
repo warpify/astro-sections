@@ -1,28 +1,148 @@
 ---
 import Layout from "../layouts/base.astro";
-import { EmptySection } from "../index.js";
-import { FullWidthSection } from "../index.js";
-import { HalfSection } from "../index.js";
-import { ImageHero } from "../index.js";
-import { ImageSection } from "../index.js";
+import { Section, ImageSection, HalfSection, EmptySection, Hero } from "../index.js";
+import { Translate } from "astro-localization";
+import { Image } from "astro-image";
+
+const lmap = {};
 ---
 
-<Layout>
-	<ImageHero>
-	</ImageHero>
+<Layout pathname={Astro.request.url.pathname} canonicalURL={Astro.request.canonicalURL.href}>
+	<Hero
+		id="hero"
+		{lmap}
+		image="/images/illustrations/Astronaut-pana.svg"
+		title="hero-caption"
+		titleUnderline="hero-caption-b"
+		subtitle="lorem-ipsum-medium"
+		buttonText="Get started"
+		buttonLink="#"
+	/>
 
-	<EmptySection>
+	<EmptySection id="partners" class="partners">
+		<div class="wrapper">
+			<a href="#" class="item">
+				<Image
+					src="https://raw.githubusercontent.com/alawe45/Html-Css-Js-game-agency-project/master/images/partner-1.png"
+					alt="Riot Games"
+					class="partner__img"
+				/>
+			</a>
+			<a href="#" class="item">
+				<Image
+					src="https://raw.githubusercontent.com/alawe45/Html-Css-Js-game-agency-project/master/images/partner-2.png"
+					alt="Blizzard"
+					class="partner__img"
+				/>
+			</a>
+			<a href="#" class="item">
+				<Image
+					src="https://raw.githubusercontent.com/alawe45/Html-Css-Js-game-agency-project/master/images/partner-3.png"
+					alt="Zynga"
+					class="partner__img"
+				/>
+			</a>
+			<a href="#" class="item">
+				<Image
+					src="https://raw.githubusercontent.com/alawe45/Html-Css-Js-game-agency-project/master/images/partner-4.png"
+					alt="Sega"
+					class="partner__img"
+				/>
+			</a>
+			<a href="#" class="item">
+				<Image
+					src="https://raw.githubusercontent.com/alawe45/Html-Css-Js-game-agency-project/master/images/partner-5.png"
+					alt="Activision"
+					class="partner__img"
+				/>
+			</a>
+		</div>
 	</EmptySection>
-	<FullWidthSection>
-	</FullWidthSection>
-	<HalfSection>
+
+	<HalfSection id="features" class="features" {lmap} title="FEATURES" subtitle="What we are offering" description="lorem-ipsum-short">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus varius mauris congue euismod. Duis semper tincidunt orci, eu consequat
+			nulla vulputate et. Mauris non ornare urna, nec interdum lacus. Sed et scelerisque nulla. Fusce sagittis ullamcorper risus, at ultrices lectus
+			rhoncus nec. Suspendisse at condimentum mauris. Aliquam erat volutpat. Nunc sodales vehicula lacus, quis sagittis urna suscipit quis. Integer sit
+			amet erat posuere, posuere ex non, auctor ante. Maecenas ullamcorper sem non porta sollicitudin. Integer id urna semper, pretium leo eget, rhoncus
+			nulla. Fusce faucibus scelerisque tincidunt.
+		</p>
 	</HalfSection>
-	<ImageSection>
+
+	<Section id="team" class="team" {lmap} title="TEAM" subtitle="Meet our team">
+		<div class="wrapper">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus varius mauris congue euismod. Duis semper tincidunt orci, eu consequat
+				nulla vulputate et. Mauris non ornare urna, nec interdum lacus. Sed et scelerisque nulla. Fusce sagittis ullamcorper risus, at ultrices lectus
+				rhoncus nec. Suspendisse at condimentum mauris. Aliquam erat volutpat. Nunc sodales vehicula lacus, quis sagittis urna suscipit quis. Integer
+				sit amet erat posuere, posuere ex non, auctor ante. Maecenas ullamcorper sem non porta sollicitudin. Integer id urna semper, pretium leo eget,
+				rhoncus nulla. Fusce faucibus scelerisque tincidunt.
+			</p>
+		</div>
+		<div slot="footer">
+			<p>Lorem ipsum</p>
+		</div>
+	</Section>
+
+	<ImageSection
+		imgUrl="/images/illustrations/Astronaut-cuate.svg"
+		imgAlt="Illustration"
+		{lmap}
+		imgAnimateOnScroll={true}
+		title="SITES WITH BENEFITS"
+		subtitle="Why use the Jamstack?"
+	>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus varius mauris congue euismod. Duis semper tincidunt orci, eu consequat
+			nulla vulputate et. Mauris non ornare urna, nec interdum lacus. Sed et scelerisque nulla. Fusce sagittis ullamcorper risus, at ultrices lectus
+			rhoncus nec. Suspendisse at condimentum mauris. Aliquam erat volutpat. Nunc sodales vehicula lacus, quis sagittis urna suscipit quis. Integer sit
+			amet erat posuere, posuere ex non, auctor ante. Maecenas ullamcorper sem non porta sollicitudin. Integer id urna semper, pretium leo eget, rhoncus
+			nulla. Fusce faucibus scelerisque tincidunt.
+		</p>
 	</ImageSection>
+
+	<Section id="contact" {lmap} title="JAMSTACK DEVELOPERS FOR HIRE" subtitle="Get in Touch">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus varius mauris congue euismod. Duis semper tincidunt orci, eu consequat
+			nulla vulputate et. Mauris non ornare urna, nec interdum lacus. Sed et scelerisque nulla. Fusce sagittis ullamcorper risus, at ultrices lectus
+			rhoncus nec. Suspendisse at condimentum mauris. Aliquam erat volutpat. Nunc sodales vehicula lacus, quis sagittis urna suscipit quis. Integer sit
+			amet erat posuere, posuere ex non, auctor ante. Maecenas ullamcorper sem non porta sollicitudin. Integer id urna semper, pretium leo eget, rhoncus
+			nulla. Fusce faucibus scelerisque tincidunt.
+		</p>
+	</Section>
 </Layout>
 
-<style global>
-	body {
-		background: var(--color-bg);
+<style lang="scss">
+	.partners {
+		text-align: center;
+
+		.wrapper {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+			gap: 1rem;
+			align-items: center;
+
+			.item {
+				transition: none 300ms ease-in-out;
+				transition-property: transform, opacity;
+
+				&::hover {
+					transform: translateY(-0.1rem);
+					opacity: 0.8;
+				}
+			}
+		}
+	}
+
+	.features .wrapper {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
+		gap: 2rem;
+	}
+
+	.team .wrapper {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 21.875rem), 1fr));
+		gap: 1.5rem;
 	}
 </style>

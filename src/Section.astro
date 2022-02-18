@@ -1,0 +1,40 @@
+---
+import { Translate } from "astro-localization";
+
+interface Props {
+	title: string;
+	subtitle: string;
+	description: string;
+	alt: boolean;
+	id?: string;
+	container?: boolean;
+	lmap: Object;
+}
+
+const { title, subtitle, description, id = false, class: className = "", alt = false, container = true, lmap = {} } = Astro.props as Props;
+---
+
+<section {id} class={`section ${className} ${alt ? "alt" : ""}`}>
+	<div class={`${container ? "container" : ""}`}>
+		<slot name="header" />
+		{title && (
+			<h2>
+				<Translate lmap={lmap} key={title} />
+			</h2>
+		)}
+		{subtitle && (
+			<h3>
+				<Translate lmap={lmap} key={subtitle} />
+			</h3>
+		)}
+		{description && (
+			<h3>
+				<Translate lmap={lmap} key={description} />
+			</h3>
+		)}
+		<div class="content">
+			<slot />
+		</div>
+		<slot name="footer" />
+	</div>
+</section>

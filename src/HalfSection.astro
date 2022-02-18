@@ -1,24 +1,70 @@
 ---
-import { Translate } from 'astro-localization'
+import { Translate } from "astro-localization";
 
 interface Props {
-  title: string
-  subtitle: string
-  description: string
-  className: string
-  alt: boolean
-  id?: string
+	title: string;
+	subtitle: string;
+	description: string;
+	className: string; // Class will apply to section tag
+	alt: boolean; // apply class for alternate background
+	id?: string; // id for the section tag
+	container?: boolean; // apply class container
+	inverted?: boolean; // invert the order of the sections
+	verticalAlignment?: string; // center | start | end
+	lmap?: Object;
 }
 
-const { title, subtitle, description, id, class: className = '', alt = false } = Astro.props as props
+const {
+	title,
+	subtitle,
+	description,
+	id = false,
+	class: className = "",
+	alt = false,
+	container = true,
+	inverted = false,
+	verticalAlignment = "start",
+	lmap = {}
+} = Astro.props as Props;
+
+let verticalAlignmentClass = "v-start";
+switch (verticalAlignment) {
+	case "center" || "middle":
+		verticalAlignmentClass = "v-center";
+		break;
+	case "start" || "top":
+		verticalAlignmentClass = "v-start";
+		break;
+	case "end" || "flex-end" || "bottom":
+		verticalAlignmentClass = "v-end";
+		break;
+	default:
+		verticalAlignmentClass = "v-start";
+}
 ---
 
-<section class={`${alt && 'alt'} ${className}`} id={id || ''}>
-	<div class="container">
-		<div class="caption">
-			{title && <h2 class="h6 text-primary"><strong><Translate key={title} /></strong></h2>}
-			{subtitle && <h3 class="h2"><Translate key={subtitle} /></h3>}
-			{description && <p><Translate key={description} /></p>}
+<section {id} class={`half-section ${className} ${alt ? "alt" : ""}`}>
+	<div class={`${container ? "container" : ""}`}>
+		<div class={`caption ${verticalAlignmentClass} ${inverted ? "inverted" : ""}`}>
+			<slot name="header" />
+			<div>
+				{title && (
+					<h2>
+						<Translate key={title} {lmap} />
+					</h2>
+				)}
+				{subtitle && (
+					<h3>
+						<Translate key={subtitle} {lmap} />
+					</h3>
+				)}
+				{description && (
+					<p>
+						<Translate key={description} {lmap} />
+					</p>
+				)}
+			</div>
+			<slot name="footer" />
 		</div>
 		<div class="content">
 			<slot />
@@ -33,12 +79,21 @@ const { title, subtitle, description, id, class: className = '', alt = false } =
 		gap: 2rem;
 
 		> .caption {
-			max-width: 25rem;
+			display: flex;
+			flex-direction: column;
+
+			&.inverted {
+				order: 1;
+			}
+			&.v-start {
+				justify-content: start;
+			}
+			&.v-center {
+				justify-content: center;
+			}
+			&.v-end {
+				justify-content: end;
+			}
 		}
-	}
-
-
-	h2 {
-		text-transform: uppercase;
 	}
 </style>

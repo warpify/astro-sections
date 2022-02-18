@@ -1,21 +1,19 @@
 ---
-import { Translate } from 'astro-localization'
+import { Translate } from "astro-localization";
 
 interface Props {
-  className: string
-  alt: boolean
-  id?: string
+	className: string;
+	alt: boolean;
+	id?: string;
+	container?: boolean;
+	lmap: Object;
 }
 
-const { id, class: className = '', alt = false } = Astro.props as props
+const { id = false, class: className = "", alt = false, container = true, lmap = {} } = Astro.props as props;
 ---
 
-<section class={`${alt && 'alt'} ${className}`} id={id || ''}>
-	<div class="container">
+<section {id} class={`empty-section ${className} ${alt ? "alt" : ""}`}>
+	<div class={`${container ? "container" : ""}`}>
 		<slot />
-    </div>
+	</div>
 </section>
-
-<style lang="scss">
-
-</style>
