@@ -50,17 +50,17 @@ switch (verticalAlignment) {
 			<div>
 				{title && (
 					<h2>
-						<Translate key={title} {lmap} />
+						<Translate {lmap} key={title} />
 					</h2>
 				)}
 				{subtitle && (
 					<h3>
-						<Translate key={subtitle} {lmap} />
+						<Translate {lmap} key={subtitle} />
 					</h3>
 				)}
 				{description && (
 					<p>
-						<Translate key={description} {lmap} />
+						<Translate {lmap} key={description} />
 					</p>
 				)}
 			</div>
