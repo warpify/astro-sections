@@ -41,6 +41,6 @@
 	},
 	"dependencies": {
 		"astro-image": "^0.0.2",
-		"astro-localization": "^0.0.2"
+		"astro-localization": "^0.0.3"
 	}
 }

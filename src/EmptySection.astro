@@ -2,18 +2,17 @@
 import { Translate } from "astro-localization";
 
 interface Props {
-	className: string;
-	alt: boolean;
-	id?: string;
-	container?: boolean;
-	lmap: Object;
+	id?: string; // Id for the <section> element
+	className?: string; // Classes to add to <section> element
+	alt?: boolean; // Add alt class to <section> element
+	container?: boolean; // Add container class
 }
 
-const { id = false, class: className = "", alt = false, container = true, lmap = {} } = Astro.props as props;
+const { id = false, class: className = "", alt = false, container = true } = Astro.props as Props;
 ---
 
-<section {id} class={`empty-section ${className} ${alt ? "alt" : ""}`}>
-	<div class={`${container ? "container" : ""}`}>
+<section {id} class={`empty-section ${className} ${alt ? "alt" : ""}`.trim()}>
+	<div class={`${container ? "container" : ""}`.trim()}>
 		<slot />
 	</div>
 </section>

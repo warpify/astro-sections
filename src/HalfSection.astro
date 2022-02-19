@@ -2,13 +2,13 @@
 import { Translate } from "astro-localization";
 
 interface Props {
+	id?: string; // Id for the <section> element
+	className?: string; // Classes to add to <section> element
+	alt?: boolean; // Add alt class to <section> element
+	container?: boolean; // Add container class
 	title: string;
 	subtitle: string;
 	description: string;
-	className: string; // Class will apply to section tag
-	alt: boolean; // apply class for alternate background
-	id?: string; // id for the section tag
-	container?: boolean; // apply class container
 	inverted?: boolean; // invert the order of the sections
 	verticalAlignment?: string; // center | start | end
 	lmap?: Object;
@@ -43,9 +43,9 @@ switch (verticalAlignment) {
 }
 ---
 
-<section {id} class={`half-section ${className} ${alt ? "alt" : ""}`}>
-	<div class={`${container ? "container" : ""}`}>
-		<div class={`caption ${verticalAlignmentClass} ${inverted ? "inverted" : ""}`}>
+<section {id} class={`half-section ${className} ${alt ? "alt" : ""}`.trim()}>
+	<div class={`${container ? "container" : ""}`.trim()}>
+		<div class={`caption ${verticalAlignmentClass} ${inverted ? "inverted" : ""}`.trim()}>
 			<slot name="header" />
 			<div>
 				{title && (

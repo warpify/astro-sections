@@ -2,20 +2,21 @@
 import { Translate } from "astro-localization";
 
 interface Props {
+	id?: string; // Id for the <section> element
+	className?: string; // Classes to add to <section> element
+	alt?: boolean; // Add alt class to <section> element
+	container?: boolean; // Add container class
 	title: string;
 	subtitle: string;
 	description: string;
-	alt: boolean;
-	id?: string;
-	container?: boolean;
 	lmap: Object;
 }
 
 const { title, subtitle, description, id = false, class: className = "", alt = false, container = true, lmap = {} } = Astro.props as Props;
 ---
 
-<section {id} class={`section ${className} ${alt ? "alt" : ""}`}>
-	<div class={`${container ? "container" : ""}`}>
+<section {id} class={`section ${className} ${alt ? "alt" : ""}`.trim()}>
+	<div class={`${container ? "container" : ""}`.trim()}>
 		<slot name="header" />
 		{title && (
 			<h2>

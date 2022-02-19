@@ -3,12 +3,13 @@ import { Image } from "astro-image";
 import { Translate } from "astro-localization";
 
 interface Props {
-	className?: string;
+	id?: string; // Id for the <section> element
+	className?: string; // Classes to add to <section> element
+	container?: boolean; // Add container class
 	title: string;
 	subtitle?: string;
 	buttonText?: string;
 	buttonLink?: string;
-	id?: string;
 	image?: string;
 	lmap?: Object;
 }
@@ -16,8 +17,8 @@ interface Props {
 const { title, subtitle, buttonText, buttonLink, image, id = false, class: className = "", container = true, lmap = {} } = Astro.props as Props;
 ---
 
-<section {id} class={`hero ${className}`}>
-	<div class={`${container ? "container" : ""} hero-container`}>
+<section {id} class={`hero ${className}`.trim()}>
+	<div class={`${container ? "container" : ""} hero-container`.trim()}>
 		<div class="hero-text">
 			<h1 class="hero-title">
 				<Translate {lmap} key={title} />
