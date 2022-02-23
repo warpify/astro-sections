@@ -1,10 +1,12 @@
 # 🚀 Astro sections
 
-### [📘 Documentation →](https://astros.warps.io/documentation)
+### [📘 Documentation →](https://astros.warps.it/documentation)
 
 ### [🧑‍🚀 Astro website →](https://astro.build/)
 
-This components are designed to allow creation of structured website sections. They define a set of standard classes to be easyly customizzable, you can check an example here: https://github.com/warpsio/astros
+This components are designed to allow creation of structured website sections. They define a set of standard classes to be easyly customizzable, you can check an example here: https://github.com/warpsio/astros.
+
+It works for every website but it's designed to integrate seamlessy with [warpsio templates](https://github.com/warpsio).
 
 ## How To Use
 

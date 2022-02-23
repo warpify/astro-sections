@@ -1,10 +1,11 @@
 ---
 import Layout from "../layouts/base.astro";
 import { Section, ImageSection, HalfSection, EmptySection, Hero } from "../index.js";
-import { Translate } from "astro-localization";
-import { Image } from "astro-image";
 
-const lmap = {};
+import it from "../data/localization/it.json";
+import en from "../data/localization/en.json";
+
+const lmap = { it, en };
 ---
 
 <Layout pathname={Astro.request.url.pathname} canonicalURL={Astro.request.canonicalURL.href}>
@@ -13,7 +14,6 @@ const lmap = {};
 		{lmap}
 		image="/images/illustrations/Astronaut-pana.svg"
 		title="hero-caption"
-		titleUnderline="hero-caption-b"
 		subtitle="lorem-ipsum-medium"
 		buttonText="Get started"
 		buttonLink="#"
@@ -21,45 +21,11 @@ const lmap = {};
 
 	<EmptySection id="partners" class="partners">
 		<div class="wrapper">
-			<a href="#" class="item">
-				<Image
-					src="https://raw.githubusercontent.com/alawe45/Html-Css-Js-game-agency-project/master/images/partner-1.png"
-					alt="Riot Games"
-					class="partner__img"
-				/>
-			</a>
-			<a href="#" class="item">
-				<Image
-					src="https://raw.githubusercontent.com/alawe45/Html-Css-Js-game-agency-project/master/images/partner-2.png"
-					alt="Blizzard"
-					class="partner__img"
-				/>
-			</a>
-			<a href="#" class="item">
-				<Image
-					src="https://raw.githubusercontent.com/alawe45/Html-Css-Js-game-agency-project/master/images/partner-3.png"
-					alt="Zynga"
-					class="partner__img"
-				/>
-			</a>
-			<a href="#" class="item">
-				<Image
-					src="https://raw.githubusercontent.com/alawe45/Html-Css-Js-game-agency-project/master/images/partner-4.png"
-					alt="Sega"
-					class="partner__img"
-				/>
-			</a>
-			<a href="#" class="item">
-				<Image
-					src="https://raw.githubusercontent.com/alawe45/Html-Css-Js-game-agency-project/master/images/partner-5.png"
-					alt="Activision"
-					class="partner__img"
-				/>
-			</a>
+			<span>Test</span>
 		</div>
 	</EmptySection>
 
-	<HalfSection id="features" class="features" {lmap} title="FEATURES" subtitle="What we are offering" description="lorem-ipsum-short">
+	<HalfSection id="features" class="features" {lmap} title="hero-caption" subtitle="lorem-ipsum-short" description="lorem-ipsum-medium">
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus varius mauris congue euismod. Duis semper tincidunt orci, eu consequat
 			nulla vulputate et. Mauris non ornare urna, nec interdum lacus. Sed et scelerisque nulla. Fusce sagittis ullamcorper risus, at ultrices lectus
@@ -69,7 +35,7 @@ const lmap = {};
 		</p>
 	</HalfSection>
 
-	<Section id="team" class="team" {lmap} title="TEAM" subtitle="Meet our team">
+	<Section id="team" class="team" {lmap} title="Title not localized" subtitle="Subtitle">
 		<div class="wrapper">
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus varius mauris congue euismod. Duis semper tincidunt orci, eu consequat
@@ -84,14 +50,7 @@ const lmap = {};
 		</div>
 	</Section>
 
-	<ImageSection
-		imgUrl="/images/illustrations/Astronaut-cuate.svg"
-		imgAlt="Illustration"
-		{lmap}
-		imgAnimateOnScroll={true}
-		title="SITES WITH BENEFITS"
-		subtitle="Why use the Jamstack?"
-	>
+	<ImageSection imgUrl="/images/yourImage.svg" imgAlt="Illustration" {lmap} title="hero-caption" subtitle="Subtitle not localized">
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus varius mauris congue euismod. Duis semper tincidunt orci, eu consequat
 			nulla vulputate et. Mauris non ornare urna, nec interdum lacus. Sed et scelerisque nulla. Fusce sagittis ullamcorper risus, at ultrices lectus
@@ -101,7 +60,7 @@ const lmap = {};
 		</p>
 	</ImageSection>
 
-	<Section id="contact" {lmap} title="JAMSTACK DEVELOPERS FOR HIRE" subtitle="Get in Touch">
+	<Section id="contact" {lmap} title="hero-caption" subtitle="Get in Touch">
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus varius mauris congue euismod. Duis semper tincidunt orci, eu consequat
 			nulla vulputate et. Mauris non ornare urna, nec interdum lacus. Sed et scelerisque nulla. Fusce sagittis ullamcorper risus, at ultrices lectus
@@ -113,6 +72,10 @@ const lmap = {};
 </Layout>
 
 <style lang="scss">
+	/*
+	 * We suggest to place here your custom styles for the components of the page
+	 leike in the example below
+	 */
 	.partners {
 		text-align: center;
 
@@ -133,13 +96,11 @@ const lmap = {};
 			}
 		}
 	}
-
 	.features .wrapper {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
 		gap: 2rem;
 	}
-
 	.team .wrapper {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(min(100%, 21.875rem), 1fr));
