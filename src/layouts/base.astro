@@ -1,12 +1,19 @@
+---
+import "../style/main.scss";
+import { LanguageSwitcher } from "astro-localization";
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="stylesheet" href={Astro.resolve("../style/main.scss")} />
 	</head>
 
 	<body>
+		<header>
+			<LanguageSwitcher />
+		</header>
 		<main id="main">
 			<slot />
 		</main>
@@ -18,4 +25,3 @@
 		flex: 1 0 0;
 	}
 </style>
-

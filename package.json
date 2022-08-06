@@ -1,6 +1,7 @@
 {
 	"name": "astro-sections",
-	"version": "0.0.5",
+	"type": "module",
+	"version": "0.0.6",
 	"description": "Sections for astro",
 	"homepage": "https://github.com/warpsio/astro-sections",
 	"bugs": {
@@ -33,14 +34,15 @@
 		"release": "standard-version"
 	},
 	"devDependencies": {
-		"astro": "^0.23.0",
-		"prettier": "^2.5.1",
-		"prettier-plugin-astro": "^0.0.12",
-		"sass": "^1.49.8",
-		"standard-version": "^9.3.2"
+		"astro": "^1.0.0-rc.7",
+		"prettier": "^2.7.1",
+		"prettier-plugin-astro": "^0.3.0",
+		"sass": "^1.54.3",
+		"standard-version": "^9.5.0"
 	},
 	"dependencies": {
-		"astro-image": "^0.0.2",
-		"astro-localization": "^0.0.3"
+		"astro-icon": "^0.7.3",
+		"astro-image": "^0.0.3",
+		"astro-localization": "^0.0.5"
 	}
 }

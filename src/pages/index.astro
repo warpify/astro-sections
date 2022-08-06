@@ -8,7 +8,7 @@ import en from "../data/localization/en.json";
 const lmap = { it, en };
 ---
 
-<Layout pathname={Astro.request.url.pathname} canonicalURL={Astro.request.canonicalURL.href}>
+<Layout pathname={Astro.request.url.pathname} canonicalURL={Astro.canonicalURL.href}>
 	<Hero
 		id="hero"
 		{lmap}
